@@ -1,0 +1,24 @@
+---
+tarantool-key-value-storage.router:
+  advertise_uri: localhost:3301
+  http_port: 8081
+
+tarantool-key-value-storage.s1-master:
+  advertise_uri: localhost:3302
+  http_port: 8082
+
+tarantool-key-value-storage.s1-replica:
+  advertise_uri: localhost:3303
+  http_port: 8083
+
+tarantool-key-value-storage.s2-master:
+  advertise_uri: localhost:3304
+  http_port: 8084
+
+tarantool-key-value-storage.s2-replica:
+  advertise_uri: localhost:3305
+  http_port: 8085
+
+tarantool-key-value-storage-stateboard:
+  listen: localhost:4401
+  password: passwd

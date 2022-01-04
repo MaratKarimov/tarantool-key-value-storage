@@ -1,0 +1,69 @@
+version: '3'
+services:
+
+  router-1:
+    image: "tarantool-key-value-storage:latest"
+    ports:
+      - "8081:8081"
+    environment:
+      - TARANTOOL_ADVERTISE_URI=router-1:3301
+      - TARANTOOL_INSTANCE_NAME=router-1
+
+  storage-1:
+    image: "tarantool-key-value-storage:latest"
+    ports:
+      - "8082:8081"
+      - "3302:3301"
+    environment:
+      - TARANTOOL_ADVERTISE_URI=storage-1:3301
+      - TARANTOOL_INSTANCE_NAME=storage-1
+
+  storage-2:
+    image: "tarantool-key-value-storage:latest"
+    ports:
+      - "8083:8081"
+      - "3303:3301"
+    environment:
+      - TARANTOOL_ADVERTISE_URI=storage-2:3301
+      - TARANTOOL_INSTANCE_NAME=storage-2
+
+  storage-3:
+    ports:
+      - "8084:8081"
+      - "3304:3301"
+    image: "tarantool-key-value-storage:latest"
+    environment:
+      - TARANTOOL_ADVERTISE_URI=storage-3:3301
+      - TARANTOOL_INSTANCE_NAME=storage-3
+
+  storage-4:
+    ports:
+      - "8085:8081"
+      - "3305:3301"
+    image: "tarantool-key-value-storage:latest"
+    environment:
+      - TARANTOOL_ADVERTISE_URI=storage-4:3301
+      - TARANTOOL_INSTANCE_NAME=storage-4
+
+  storage-5:
+    ports:
+      - "8086:8081"
+      - "3306:3301"
+    image: "tarantool-key-value-storage:latest"
+    environment:
+      - TARANTOOL_ADVERTISE_URI=storage-5:3301
+      - TARANTOOL_INSTANCE_NAME=storage-5
+
+  storage-6:
+    ports:
+      - "8087:8081"
+      - "3307:3301"
+    image: "tarantool-key-value-storage:latest"
+    environment:
+      - TARANTOOL_ADVERTISE_URI=storage-6:3301
+      - TARANTOOL_INSTANCE_NAME=storage-6
+
+  bootstrap:
+    build:
+      context: auto-bootstrap/
+      dockerfile: Dockerfile
