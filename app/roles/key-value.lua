@@ -31,12 +31,17 @@ local function create_kv(request)
     if body['key'] == nil or body['value'] == nil then
         return invalid_body(request, 'create', 'Missing fields of key or value')
     end
+    -- find ttl
+    local ttl = body['ttl']
+    if ttl == nil then
+        ttl = (5 * 60)
+    end
     -- init key var
     local key = body['key']
     -- calculate bucket id
     local bucket_id = vshard.router.bucket_id_strcrc32(key)
     -- upsert data for bucket
-    local data, err = vshard.router.callrw(bucket_id, 'kv_storage.upsert', { key, body['value'] })
+    local data, err = vshard.router.callrw(bucket_id, 'kv_storage.upsert', { key, body['value'], ttl })
     if data == nil then
         logger.info(err)
         return internal_error(request, 'create', 'insertion failed')

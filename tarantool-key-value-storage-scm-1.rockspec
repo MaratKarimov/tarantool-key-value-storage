@@ -10,8 +10,8 @@ dependencies = {
     'cartridge == 2.7.3-1',
     'cartridge-cli-extensions == 1.1.1-1',
     'checks == 3.1.0-1',
-    'document == 1.0.1-1',
     'metrics == 0.12.0-1',
+    'expirationd == 1.1.1-1'
 }
 
 build = {
