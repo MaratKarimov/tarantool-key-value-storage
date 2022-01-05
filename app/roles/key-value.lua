@@ -72,7 +72,7 @@ local function find(request)
         resp.status = 404
         return resp
     end
-    local resp = request:render{ json = { key = data.key, value = data.value }}
+    local resp = request:render{ json = { info = 'Success', value = data.value, timestamp = data.timestamp }}
     resp.status = 200
     return resp
 end

@@ -5,6 +5,7 @@ router:
   - failover-coordinator
   - vshard-router
   - app.roles.key-value
+  - app.roles.expiry-entries
   all_rw: false
 s-1:
   instances:
@@ -13,6 +14,7 @@ s-1:
   roles:
   - vshard-storage
   - app.roles.storage
+  - app.roles.expiry-entries
   weight: 1
   all_rw: false
   vshard_group: default
@@ -23,6 +25,7 @@ s-2:
   roles:
   - vshard-storage
   - app.roles.storage
+  - app.roles.expiry-entries
   weight: 1
   all_rw: false
   vshard_group: default

@@ -44,6 +44,7 @@ local ok, err = cartridge.cfg({
         'cartridge.roles.metrics',
         'app.roles.key-value',
         'app.roles.storage',
+        'app.roles.expiry-entries',
     }
 }, {
     memtx_memory = memtx_memory,
